@@ -43,6 +43,20 @@ namespace Lab03_GuessingGame
                 Setting();
             }
 
+        }
+
+        static void SettingMenu()
+        {
+            //options within the settings
+            Console.WriteLine("Press 1 to view words in your word bank.");
+            Console.WriteLine("Press 2 to add words to your word bank.");
+            Console.WriteLine("Press 3 to remove words from your word bank.");
+            Console.WriteLine("Press 4 to go back to the main menu.");
+            Console.WriteLine("Press 5 to exit the game.");
+
+            //check user input
+            string userInput = Console.ReadLine();
+            ReadUserOption(userInput);
 
         }
 

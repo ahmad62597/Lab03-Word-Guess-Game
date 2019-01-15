@@ -1,12 +1,17 @@
 ﻿using System;
+using System.IO;
 
 namespace Lab03_GuessingGame
 {
     class Program
     {
+        public static string path = "../../../../words.txt";
+
+
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            
 
         }
 
@@ -26,7 +31,7 @@ namespace Lab03_GuessingGame
 
         static void ReadUserOption (string userInput)
 
-        {   //read users input from main menu and direct them to appropriate section
+        {   //read users input from main menu and directs them to appropriate section
             
             if (userInput == "1")
             {
@@ -58,6 +63,44 @@ namespace Lab03_GuessingGame
             string userInput = Console.ReadLine();
             ReadUserOption(userInput);
 
+        }
+
+        static void ReadSettingMenuInput(string userInput)
+        {
+            {   //read users input from settings menu and directs them to appropriate section
+
+                if (userInput == "1")
+                {
+                    ViewWord();
+                }
+
+                if (userInput == "2")
+                {
+                    AddWord();
+                }
+
+                if (userInput == "3")
+                {
+                    RemoveWord();
+                }
+
+                if (userInput == "4")
+                {
+                    MainMenu();
+                }
+
+                if (userInput == "5")
+                {
+                    ExitGame();
+                }
+
+            }
+
+        }
+
+        static void ViewWord()
+        {
+            using (StreamReader streamReader = File.OpenText(path)) ;
         }
 
 

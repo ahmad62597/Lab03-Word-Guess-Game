@@ -5,12 +5,13 @@ namespace Lab03_GuessingGame
 {
     class Program
     {
-        public static string path = "../../../../words.txt";
+        public static string path = "../../../words.txt";
 
 
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            MainMenu();
             
 
         }
@@ -35,17 +36,17 @@ namespace Lab03_GuessingGame
             
             if (userInput == "1")
             {
-                PlayGame();
+               // PlayGame();
             }
 
             if (userInput == "2")
             {
-                EndGame();
+                //EndGame();
             }
 
             if (userInput == "3")
             {
-                Setting();
+                SettingMenu();
             }
 
         }
@@ -76,12 +77,12 @@ namespace Lab03_GuessingGame
 
                 if (userInput == "2")
                 {
-                    AddWord();
+                    //AddWord();
                 }
 
                 if (userInput == "3")
                 {
-                    RemoveWord();
+                    //RemoveWord();
                 }
 
                 if (userInput == "4")
@@ -91,7 +92,7 @@ namespace Lab03_GuessingGame
 
                 if (userInput == "5")
                 {
-                    ExitGame();
+                    //ExitGame();
                 }
 
             }
@@ -100,7 +101,15 @@ namespace Lab03_GuessingGame
 
         static void ViewWord()
         {
-            using (StreamReader streamReader = File.OpenText(path)) ;
+            using (StreamReader streamReader = File.OpenText(path))
+            {
+                while (!streamReader.EndOfStream)
+                {
+                    Console.WriteLine(streamReader.ReadLine());
+                }
+                    
+            }
+            Console.ReadKey();
         }
 
 

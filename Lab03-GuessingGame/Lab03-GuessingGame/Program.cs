@@ -5,13 +5,14 @@ namespace Lab03_GuessingGame
 {
     class Program
     {
-        public static string path = "../../../words.txt";
+        public static string path = "../../../../../words.txt";
 
 
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
             MainMenu();
+            Console.ReadKey();
             
 
         }
@@ -62,7 +63,7 @@ namespace Lab03_GuessingGame
 
             //check user input
             string userInput = Console.ReadLine();
-            ReadUserOption(userInput);
+            ReadSettingMenuInput(userInput);
 
         }
 
@@ -72,6 +73,7 @@ namespace Lab03_GuessingGame
 
                 if (userInput == "1")
                 {
+                   
                     ViewWord();
                 }
 
@@ -103,14 +105,29 @@ namespace Lab03_GuessingGame
         {
             using (StreamReader streamReader = File.OpenText(path))
             {
+
+                Console.WriteLine("KeyBank:");
                 while (!streamReader.EndOfStream)
                 {
+
                     Console.WriteLine(streamReader.ReadLine());
+
                 }
-                    
+
             }
             Console.ReadKey();
         }
+
+        static void AddWord()
+        {
+            using (StreamWriter streamWriter = File.AppendText(path))
+            {
+
+
+            }
+        }
+
+    
 
 
     }

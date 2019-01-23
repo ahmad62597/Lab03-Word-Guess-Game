@@ -37,7 +37,7 @@ namespace Lab03_GuessingGame
             
             if (userInput == "1")
             {
-               // PlayGame();
+                PlayGame();
             }
 
             if (userInput == "2")
@@ -79,7 +79,7 @@ namespace Lab03_GuessingGame
 
                 if (userInput == "2")
                 {
-                    //AddWord();
+                    AddWord();
                 }
 
                 if (userInput == "3")
@@ -111,24 +111,72 @@ namespace Lab03_GuessingGame
                 {
 
                     Console.WriteLine(streamReader.ReadLine());
+                  
 
                 }
 
             }
             Console.ReadKey();
+            SettingMenu();
         }
 
         static void AddWord()
         {
+            Console.WriteLine("Please write the word that you would like to add.");
+            string userInput = Console.ReadLine();
+
             using (StreamWriter streamWriter = File.AppendText(path))
+            {
+                streamWriter.WriteLine(userInput);
+                streamWriter.Close();
+            }
+            Console.WriteLine($"The word {userInput} has been added.");
+            SettingMenu();
+        }
+
+
+        static void PlayGame() 
             {
 
 
+    }
+
+        static int GetRandomNumber(){
+      
+            int counter = 0;
+
+            using (StreamReader streamReader = File.OpenText(path)) {
+                while (streamReader.ReadLine() !=null){ //counting amount of words
+                    counter ++;
+                    }
+
             }
+
+            Random randomNumber = new Random();
+            return randomNumber.Next(1, counter + 1);
+
+         }
+
         }
 
-    
+    static string GetRandomWord(){
 
+        int randomNumber = GetRandomNumber();
+        string randomWord = "Yes";
+        using (StreamReader streamReader = File.OpenText(path)) {
+                for (i = 0; i < randomNumber; i++ ){
 
-    }
+                 randomWord = streamReader.ReadLine();
+                
+                    }
+                
+                }  
+        return randomWord;
+
+  }
+
 }
+
+      
+
+    

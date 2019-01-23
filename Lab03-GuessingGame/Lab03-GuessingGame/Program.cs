@@ -13,28 +13,28 @@ namespace Lab03_GuessingGame
             Console.WriteLine("Hello World!");
             MainMenu();
             Console.ReadKey();
-            
+
 
         }
 
         static void MainMenu()
-        {   
+        {
             //create user menu
             Console.WriteLine("Hello, welcome to Console Hangman.");
             Console.WriteLine("");
             Console.WriteLine("Press 1 to play.");
             Console.WriteLine("Press 2 to exit.");
             Console.WriteLine("Press 3 to go to settings.");
-            
+
             //check user input
             string userInput = Console.ReadLine();
             ReadUserOption(userInput);
         }
 
-        static void ReadUserOption (string userInput)
+        static void ReadUserOption(string userInput)
 
         {   //read users input from main menu and directs them to appropriate section
-            
+
             if (userInput == "1")
             {
                 PlayGame();
@@ -43,6 +43,7 @@ namespace Lab03_GuessingGame
             if (userInput == "2")
             {
                 //EndGame();
+
             }
 
             if (userInput == "3")
@@ -73,7 +74,7 @@ namespace Lab03_GuessingGame
 
                 if (userInput == "1")
                 {
-                   
+
                     ViewWord();
                 }
 
@@ -111,7 +112,7 @@ namespace Lab03_GuessingGame
                 {
 
                     Console.WriteLine(streamReader.ReadLine());
-                  
+
 
                 }
 
@@ -135,46 +136,69 @@ namespace Lab03_GuessingGame
         }
 
 
-        static void PlayGame() 
+        static void PlayGame()
+        {
+            string randomWord = GetRandomWord();
+
+            char[] wordLength = randomWord.ToCharArray();
+
+            for (int i = 0; i < randomWord.Length; i++)
             {
+                wordLength[i] = (char)95;
+             }
+
+            Console.ReadKey();
 
 
-    }
+        }
 
-        static int GetRandomNumber(){
-      
+        static void DisplayWord (char[] guess)
+        {
+
+        }
+
+
+        static int GetRandomNumber()
+        {
+
             int counter = 0;
 
-            using (StreamReader streamReader = File.OpenText(path)) {
-                while (streamReader.ReadLine() !=null){ //counting amount of words
-                    counter ++;
-                    }
+            using (StreamReader streamReader = File.OpenText(path))
+            {
+                while (streamReader.ReadLine() != null)
+                { //counting amount of words
+                    counter++;
+                }
 
             }
 
             Random randomNumber = new Random();
             return randomNumber.Next(1, counter + 1);
 
-         }
+        }
+
+
+
+        static string GetRandomWord()
+        {
+
+            int randomNumber = GetRandomNumber();
+            string randomWord = "Yes";
+            using (StreamReader streamReader = File.OpenText(path))
+            {
+                for (int i = 0; i < randomNumber; i++)
+                {
+
+                    randomWord = streamReader.ReadLine();
+
+                }
+
+            }
+            return randomWord;
 
         }
 
-    static string GetRandomWord(){
-
-        int randomNumber = GetRandomNumber();
-        string randomWord = "Yes";
-        using (StreamReader streamReader = File.OpenText(path)) {
-                for (i = 0; i < randomNumber; i++ ){
-
-                 randomWord = streamReader.ReadLine();
-                
-                    }
-                
-                }  
-        return randomWord;
-
-  }
-
+    }
 }
 
       

@@ -147,6 +147,8 @@ namespace Lab03_GuessingGame
                 wordLength[i] = (char)95;
              }
 
+            DisplayWord(wordLength);
+
             Console.ReadKey();
 
 
@@ -154,7 +156,10 @@ namespace Lab03_GuessingGame
 
         static void DisplayWord (char[] guess)
         {
-
+            for( int i = 0; i < guess.Length; i++)
+            {
+                Console.Write(guess[i]);
+            }
         }
 
 
